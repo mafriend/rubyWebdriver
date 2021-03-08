@@ -1,4 +1,4 @@
-require "Selenium"
+require "selenium-webdriver"
 
 driver = Selenium::WebDriver.for :chrome
 driver.navigate.to "https://formy-project.herokuapp.com/switch-window"

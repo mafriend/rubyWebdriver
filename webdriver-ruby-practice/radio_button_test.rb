@@ -19,3 +19,4 @@ radio_button_3.click
 
 # checkboxes work the same way as radio buttons.
 # Homework - try to write a test for checkboxes
+# fluent_wait.rb

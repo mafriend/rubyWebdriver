@@ -1,5 +1,6 @@
 require "selenium_webdriver"
 require "rspec"
+require "chromedriver-helper"
 
 #example of rspec core
 describe "automating a form" do
@@ -25,9 +26,9 @@ describe "automating a form" do
 
     # submit form
     driver.find_element(css: 'btn.btn-l.btn-primary').click
-    
+
     #rspec expectation example (asserts)
-    expect(driver.find_element(css: 'alert.alert-success').text).to eql("The form was successfully submitted!")
+    expect(driver.find_element(class: 'alert'.text).to eql("The form was successfully submitted!"))
 
     driver.quit
   end

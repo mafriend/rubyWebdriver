@@ -1,11 +1,11 @@
-require "selenium_webdriver"
+require "selenium-webdriver"
 require "rspec"
 require "chromedriver-helper"
 
 #example of rspec core
 describe "automating a form" do
   it "submits a form" do
-    driver = Selenium::Webdriver.for :chrome
+    driver = Selenium::WebDriver.for :chrome
     driver.navigate.to "https://formy-project.herokuapp.com/form"
 
     driver.find_element(id: 'first-name').send_keys('Tina')
@@ -25,10 +25,12 @@ describe "automating a form" do
     driver.find_element(id: 'datepicker').send_keys :return
 
     # submit form
-    driver.find_element(css: 'btn.btn-l.btn-primary').click
+    driver.find_element(css: '.btn.btn-lg.btn-primary').click
 
     #rspec expectation example (asserts)
-    expect(driver.find_element(class: 'alert'.text).to eql("The form was successfully submitted!"))
+    wait = Selenium::WebDriver::Wait.new(timeout:10)
+    wait.until {driver.find_element(class: 'alert')}
+    expect(driver.find_element(class: 'alert').text).to eql("The form was successfully submitted!")
 
     driver.quit
   end
